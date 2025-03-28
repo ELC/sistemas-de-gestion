@@ -1,0 +1,58 @@
+name: Deploy Jupyter Book to Github Pages
+
+on:
+  push:
+    branches:
+      - "master"
+
+  workflow_dispatch:
+  repository_dispatch:
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python "3.12"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install pipenv==2024.4.1
+          pipenv install --dev --system
+
+      - name: Build the book
+        run: jb build book --path-output .
+
+      - name: Rename Output to _site
+        run: mv _build/html ./_site
+
+      - name: Add a nojekyll file
+        run: touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

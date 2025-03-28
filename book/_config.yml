@@ -1,0 +1,52 @@
+title: Management System
+copyright: "2025, Ezequiel Leonardo Castaño, Gastón Amengual"
+author: "Ezequiel Leonardo Castaño. Gastón Amengual"
+
+is_free: true
+
+description: >
+  Populate Description
+
+execute:
+  execute_notebooks: "force"
+
+html:
+  use_edit_page_button: true
+  use_repository_button: false
+  baseurl: https://ipbook.vercel.app/books/calculus
+
+repository:
+  url: https://github.com/elc/IPBookPlatform
+  branch: master
+
+launch_buttons:
+  thebe: true
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+parse:
+  myst_enable_extensions:
+    - html_image
+    - dollarmath
+
+bibtex_bibfiles:
+  - bibliography.bib
+
+extensions:
+  - sphinx_thebe
+
+sphinx:
+  config:
+    bibtex_reference_style: super
+
+    html_theme_options:
+      use_download_button: false
+      repository_url: https://github.com/ELC/IPBookPlatform-environment
+      use_issues_button: false
+      use_repository_button: false
+      use_edit_page_button: false
+      launch_buttons:
+        thebe: true
+        binderhub_url: "https://mybinder.org"

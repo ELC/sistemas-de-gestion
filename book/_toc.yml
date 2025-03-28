@@ -1,0 +1,13 @@
+format: jb-book
+
+root: "chapters/01_Euler"
+
+options:
+  numbered: 3
+
+parts:
+  - caption: Calculus
+    chapters:
+      - file: "chapters/02_Euler_For_Systems_of_ODEs"
+      - file: "chapters/03_Euler_for_nonlinear_system"
+
