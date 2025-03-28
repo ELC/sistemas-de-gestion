@@ -39,7 +39,8 @@ extensions:
 
 sphinx:
   config:
-    bibtex_reference_style: super
+    bibtex_default_style: plain
+    bibtex_reference_style: author_year
 
     html_theme_options:
       use_download_button: false
