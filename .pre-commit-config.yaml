@@ -1,0 +1,60 @@
+repos:
+-   repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
+    rev: v0.6.1
+    hooks:
+    -   id: pre-commit-update
+
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v5.0.0"
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: debug-statements
+
+-   repo: https://github.com/gitleaks/gitleaks
+    rev: "v8.23.3"
+    hooks:
+    -   id: gitleaks
+
+-   repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.9.1
+    hooks:
+    -   id: nbqa-ruff
+
+    -   id: nbqa-pylint
+        additional_dependencies:
+        -   "pylint==3.3.4"
+        -   "numpy==2.2.2"
+        -   "scikit-learn==1.6.1"
+        -   "scipy==1.15.1"
+        -   "pandas==2.2.3"
+        -   "matplotlib==3.10.0"
+        -   "jupyter==1.1.1"
+
+    -   id: nbqa-mypy
+        additional_dependencies:
+        -   "mypy==1.15.0"
+        -   "mypy_exhaustive_check==1.0.0"
+        -   "numpy==2.2.2"
+        -   "scikit-learn==1.6.1"
+        -   "scipy==1.15.1"
+        -   "pandas==2.2.3"
+        -   "matplotlib==3.10.0"
+        -   "jupyter==1.1.1"
+
+-   repo: https://github.com/kynan/nbstripout
+    rev: "0.8.1"
+    hooks:
+    -   id: nbstripout
+
+-   repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: "v9.21.0"
+    hooks:
+    -   id: commitlint
+        stages:
+        -   commit-msg
+        additional_dependencies:
+        -   "@commitlint/config-conventional"
+        args:
+        -   "--config=.commitlintrc.json"
