@@ -33,4 +33,5 @@ class Estimator(BaseModel):
     rmse: float
     r_squared: float
     parameters: Sequence[ParameterInfo]
+    degrees_of_freedom: int
     model_config = ConfigDict(frozen=True, arbitrary_types_allowed=True)

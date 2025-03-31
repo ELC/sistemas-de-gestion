@@ -2,6 +2,7 @@ from typing import Iterable
 
 import numpy as np
 import scipy.stats as stats
+import seaborn as sns
 
 
 def constant_variance_test(data: Iterable[float], significance_level: float = 0.05):
@@ -14,12 +15,15 @@ def constant_variance_test(data: Iterable[float], significance_level: float = 0.
     print("Variances: " + str([f"{int(v):_d}" for v in variances]))
     print(f"Levene's test statistic: {levene_statistic:.4f}")
     print(f"p-value: {p_value:.4f}")
+
     if reject_equal_variance:
         print(
             "Reject null hypothesis: Variances are not equal. - Heteroscedasticity detected."
         )
-        return
+    else:
+        print(
+            "Fail to reject null hypothesis: Variances may be equal. - Homoscedasticity assumed."
+        )
 
-    print(
-        "Fail to reject null hypothesis: Variances may be equal. - Homoscedasticity assumed."
-    )
+    sns.boxplot(thirds)
+    sns.swarmplot(thirds, size=15, color="#333")
