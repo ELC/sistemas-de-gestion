@@ -12,11 +12,11 @@ execute:
 
 html:
   use_edit_page_button: true
-  use_repository_button: false
-  baseurl: https://ipbook.vercel.app/books/calculus
+  use_repository_button: true
+  baseurl: https://elc.github.io/sistemas-de-gestion
 
 repository:
-  url: https://github.com/elc/IPBookPlatform
+  url: https://github.com/elc/sistemas-de-gestion
   branch: master
 
 launch_buttons:
@@ -44,7 +44,7 @@ sphinx:
 
     html_theme_options:
       use_download_button: false
-      repository_url: https://github.com/ELC/IPBookPlatform-environment
+      repository_url: https://github.com/ELC/sistemas-de-gestion
       use_issues_button: false
       use_repository_button: false
       use_edit_page_button: false
