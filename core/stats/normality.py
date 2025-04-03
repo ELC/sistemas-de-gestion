@@ -1,13 +1,13 @@
-from typing import Iterable
+from collections.abc import Collection
 
-import scipy.stats as stats
+from scipy import stats
 import seaborn as sns
 from statsmodels.graphics import gofplots
 from statsmodels.stats import diagnostic
 import matplotlib.pyplot as plt
 
 
-def normality_test(data: Iterable[float], significance_level: float = 0.05) -> None:
+def normality_test(data: Collection[float], significance_level: float = 0.05) -> None:
     assert 0 < significance_level < 1, "Significance level must be between 0 and 1."
 
     kolmogorov_statistic, kolmogorov_p_value = diagnostic.lilliefors(data)

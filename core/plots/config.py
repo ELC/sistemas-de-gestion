@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+
 def init_config() -> None:
     plt.style.use("bmh")
 
@@ -27,5 +28,4 @@ def init_config() -> None:
         "axes.prop_cycle": plt.cycler(color=colors),
     }
 
-    
     plt.rcParams.update(config)

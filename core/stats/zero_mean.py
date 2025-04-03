@@ -2,7 +2,7 @@ from typing import Iterable
 
 import numpy as np
 import pandas as pd
-import scipy.stats as stats
+from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -46,5 +46,5 @@ def zero_mean_test(
         capsize=0.4,
         n_boot=1e4,
     )
-    plt.xlabel(None)
+    plt.xlabel("")
     plt.show()

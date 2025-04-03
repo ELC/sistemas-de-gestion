@@ -3,10 +3,7 @@ from collections.abc import Collection
 import numpy as np
 import pandas as pd
 from scipy import stats
-from statsmodels.tsa.exponential_smoothing.ets import ETSModel
-from statsmodels.tsa.holtwinters import (
-    HoltWintersResults,
-)
+from statsmodels.tsa.exponential_smoothing.ets import ETSModel, ETSResults
 
 from .estimator import Estimator, ParameterInfo
 
@@ -36,6 +33,7 @@ def forecast_multiplicative_trend_and_seasonal(
             model, params=("smoothing_level", "smoothing_trend", "smoothing_seasonal")
         ),
         degrees_of_freedom=model.df_resid,
+        summary=model.summary().as_text(),
     )
 
 
@@ -64,6 +62,7 @@ def forecast_additive_seasonal(
             model, params=("smoothing_level", "smoothing_seasonal")
         ),
         degrees_of_freedom=model.df_resid,
+        summary=model.summary().as_text(),
     )
 
 
@@ -91,11 +90,12 @@ def forecast_simple(
         r_squared=_compute_r_squared(model, data[value_column_name]),
         parameters=_compute_params_ci(model, params=("smoothing_level",)),
         degrees_of_freedom=model.df_resid,
+        summary=model.summary().as_text(),
     )
 
 
 def _compute_r_squared(
-    model: HoltWintersResults,
+    model: ETSResults,
     values: pd.Series,
 ) -> float:
     sst = np.sum((values - np.mean(values)) ** 2)
@@ -103,15 +103,17 @@ def _compute_r_squared(
 
 
 def _compute_params_ci(
-    model: HoltWintersResults, params: Collection[str]
+    model: ETSResults, params: Collection[str]
 ) -> list[ParameterInfo]:
-    assert all(param in model.param_names for param in params), f"{params} not subset of {model.param_names}"
+    assert all(param in model.param_names for param in params), (
+        f"{params} not subset of {model.param_names}"
+    )
 
     return [_compute_ci_for_parameter(model, param) for param in params]
 
 
 def _compute_ci_for_parameter(
-    model: HoltWintersResults,
+    model: ETSResults,
     param: str,
     significance: float = 0.05,
 ):

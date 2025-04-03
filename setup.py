@@ -28,6 +28,6 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.9",
-    setup_requires='setuptools-pipfile',
+    setup_requires="setuptools-pipfile",
     use_pipfile=True,
 )

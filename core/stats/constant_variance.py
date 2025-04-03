@@ -1,7 +1,7 @@
 from typing import Iterable
 
 import numpy as np
-import scipy.stats as stats
+from scipy import stats
 import seaborn as sns
 
 
