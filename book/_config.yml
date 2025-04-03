@@ -46,7 +46,7 @@ sphinx:
       use_download_button: false
       repository_url: https://github.com/ELC/sistemas-de-gestion
       use_issues_button: false
-      use_repository_button: false
+      use_repository_button: true
       use_edit_page_button: false
       launch_buttons:
         thebe: true

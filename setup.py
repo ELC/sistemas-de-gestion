@@ -8,7 +8,7 @@ AUTHOR_EMAIL = "-"
 DESCRIPTION = "Course material to use along with the classes"
 URL = "https://github.com/ELC/sistemas-de-gestion"
 LICENSE = "MIT"
-PACKAGE_DIR = "book/chapters/core"
+PACKAGE_DIR = "."
 LONG_DESCRIPTION = Path("README.md").read_text(encoding="utf-8")
 
 setup(
@@ -21,8 +21,8 @@ setup(
     long_description_content_type="text/markdown",
     url=URL,
     license=LICENSE,
-    packages=["core"] + [f"core.{p}" for p in find_packages(where=PACKAGE_DIR)],
-    package_dir={"core": PACKAGE_DIR},
+    packages=find_packages(where=PACKAGE_DIR),
+    package_dir={"": PACKAGE_DIR},
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",

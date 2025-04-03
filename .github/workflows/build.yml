@@ -18,15 +18,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python "3.12"
+      - name: Set up Python "3.11"
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
       - name: Install dependencies
         run: |
           pip install pipenv==2024.4.1
           pipenv install --dev --system
+          pip install --force-reinstall --no-deps --editable .
 
       - name: Build the book
         run: jb build book --path-output .

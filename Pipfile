@@ -31,7 +31,7 @@ exceptiongroup = "==1.2.2"
 pexpect = "==4.9.0"
 
 [requires]
-python_version = "3.12"
+python_version = "3.11"
 
 [scripts]
 format = "pre-commit run --all-files"
