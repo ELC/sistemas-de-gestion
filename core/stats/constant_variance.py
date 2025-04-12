@@ -1,11 +1,13 @@
-from typing import Iterable
+from collections.abc import Iterable
 
 import numpy as np
-from scipy import stats
 import seaborn as sns
+from scipy import stats
 
 
-def constant_variance_test(data: Iterable[float], significance_level: float = 0.05):
+def constant_variance_test(
+    data: Iterable[float], significance_level: float = 0.05
+) -> None:
     thirds = np.array_split(list(data), 3)
     variances = np.var(thirds, axis=1)
     levene_statistic, p_value = stats.levene(*thirds)
@@ -18,11 +20,13 @@ def constant_variance_test(data: Iterable[float], significance_level: float = 0.
 
     if reject_equal_variance:
         print(
-            "Reject null hypothesis: Variances are not equal. - Heteroscedasticity detected."
+            "Reject null hypothesis: Variances are not equal. - "
+            "Heteroscedasticity detected."
         )
     else:
         print(
-            "Fail to reject null hypothesis: Variances may be equal. - Homoscedasticity assumed."
+            "Fail to reject null hypothesis: Variances may be equal. - "
+            "Homoscedasticity assumed."
         )
 
     sns.boxplot(thirds)

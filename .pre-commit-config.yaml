@@ -13,12 +13,12 @@ repos:
       - id: debug-statements
 
   - repo: https://github.com/gitleaks/gitleaks
-    rev: "v8.24.2"
+    rev: "v8.24.3"
     hooks:
       - id: gitleaks
 
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.11.3
+    rev: v0.11.5
     hooks:
       - id: ruff-format
       - id: ruff

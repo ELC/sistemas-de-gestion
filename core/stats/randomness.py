@@ -1,4 +1,4 @@
-from typing import Iterable
+from collections.abc import Iterable
 
 import seaborn as sns
 from statsmodels.sandbox.stats import runs

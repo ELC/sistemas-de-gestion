@@ -15,16 +15,15 @@ statsmodels = "==0.14.4"
 jupyter = "==1.1.1"
 pyreadstat = "==1.2.8"
 pydantic = "==2.11.1"
-
+arch = "==7.2.0"
+dieboldmariano = "==1.1.0"
 
 [dev-packages]
 pre-commit = "==4.1.0"
 pre-commit-uv = "==4.1.4"
 uv = "==0.5.29"
-
 jupyter-book = {extras=["sphinx"], version="==1.0.3"}
 docutils = "==0.17.1"
-
 # Regression for CICD usage
 tomli = "==2.2.1"
 exceptiongroup = "==1.2.2"

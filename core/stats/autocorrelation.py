@@ -1,4 +1,4 @@
-from typing import Iterable
+from collections.abc import Iterable
 
 from statsmodels.graphics import tsaplots
 from statsmodels.tsa import stattools
@@ -6,7 +6,7 @@ from statsmodels.tsa import stattools
 
 def compute_autocorrelation(data: Iterable[float]) -> None:
     acf_values = stattools.acf(data, nlags=5, fft=False, qstat=True, alpha=0.05)
-    for index, values in enumerate(zip(*acf_values)):
+    for index, values in enumerate(zip(*acf_values, strict=False)):
         if index == 0:
             continue
 

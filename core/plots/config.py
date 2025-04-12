@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from cycler import cycler
 
 
 def init_config() -> None:
@@ -25,7 +26,7 @@ def init_config() -> None:
         "lines.markersize": 10,
         "xtick.labelsize": 10,
         "ytick.labelsize": 10,
-        "axes.prop_cycle": plt.cycler(color=colors),
+        "axes.prop_cycle": cycler(color=colors),
     }
 
     plt.rcParams.update(config)

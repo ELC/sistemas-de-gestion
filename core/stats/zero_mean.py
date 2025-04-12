@@ -1,10 +1,10 @@
-from typing import Iterable
+from collections.abc import Iterable
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy import stats
 import seaborn as sns
-import matplotlib.pyplot as plt
+from scipy import stats
 
 from .descriptive import DescriptiveStatistics
 
@@ -41,7 +41,7 @@ def zero_mean_test(
         data=df.assign(group=1),
         x="group",
         y="data",
-        errorbar="ci",
+        errorbar=lambda _: (lower_bound_ci, upper_bound_ci),
         estimator=np.mean,
         capsize=0.4,
         n_boot=1e4,
